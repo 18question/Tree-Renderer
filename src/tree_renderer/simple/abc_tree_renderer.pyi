@@ -1,10 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from typing import Any, Iterable
 
 from .glyph_style import GlyphStyle
 
 
-class ABCTreeRenderer(ABC):
+class ABCTreeRenderer(metaclass=ABCMeta):
     glyph_style: GlyphStyle
     indent_prefix_stack: list[str]
 

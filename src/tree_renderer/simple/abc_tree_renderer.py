@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 from .glyph_style import STYLE_UNICODE
 
 
-class ABCTreeRenderer(ABC):
+class ABCTreeRenderer(metaclass=ABCMeta):
     glyph_style = STYLE_UNICODE
 
     def __init__(self, glyph_style=None):
