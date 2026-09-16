@@ -12,6 +12,7 @@ class ABCTreeRenderer(metaclass=ABCMeta):
         else:
             self.glyph_style = glyph_style
         self.indent_prefix_stack = []
+        self.output_lines = []
 
     @abstractmethod
     def get_children(self, node):
@@ -72,3 +73,6 @@ class ABCTreeRenderer(metaclass=ABCMeta):
         # Pop from the stack.
         if not is_root:
             self.indent_prefix_stack.pop()
+
+    def __str__(self):
+        return "\n".join(self.output_lines)
