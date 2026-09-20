@@ -31,20 +31,21 @@ class ABCTreeRenderer(metaclass=ABCMeta):
 
     def render_subtree(self, node, is_root, is_last):
         # Process the line prefix.
-        line_prefix_list = self.indent_prefix_stack[:]
+        enter_line_prefix_list = self.indent_prefix_stack[:]
         if not is_root:
             if is_last:
                 # Push onto the stack.
                 self.indent_prefix_stack.append(self.glyph_style.indent_blank)
-                line_prefix_list.append(self.glyph_style.branch_end)
+                enter_line_prefix_list.append(self.glyph_style.branch_end)
             else:
                 # Push onto the stack.
                 self.indent_prefix_stack.append(self.glyph_style.indent_guide)
-                line_prefix_list.append(self.glyph_style.branch_mid)
-        line_prefix = "".join(line_prefix_list)
+                enter_line_prefix_list.append(self.glyph_style.branch_mid)
+        enter_line_prefix = "".join(enter_line_prefix_list)
+        exit_line_prefix = "".join(self.indent_prefix_stack)
 
         # Call the hook.
-        self.on_node_enter(node, line_prefix)
+        self.on_node_enter(node, enter_line_prefix)
 
         # Iterate child nodes.
         child_iterator = iter(self.get_children(node))
@@ -68,7 +69,7 @@ class ABCTreeRenderer(metaclass=ABCMeta):
                     current_node = next_node
 
         # Call the hook.
-        self.on_node_exit(node, line_prefix)
+        self.on_node_exit(node, exit_line_prefix)
 
         # Pop from the stack.
         if not is_root:
