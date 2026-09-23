@@ -1,5 +1,4 @@
 class GlyphStyle:
-    __slots__ = ("indent_guide", "indent_blank", "branch_mid", "branch_end")
 
     def __init__(self, indent_guide, indent_blank, branch_mid, branch_end):
         self.indent_guide = indent_guide
