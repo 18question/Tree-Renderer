@@ -99,18 +99,19 @@ class ProcessTreeRenderer(ABCTreeRenderer):
         separator = colors.separator(" = ")
 
         try:
-            cmdline = " ".join(node.cmdline())
-        except psutil.Error:
-            self.output_lines.append(indent + colors.error("cmdline"))
-        else:
-            self.output_lines.append(indent + colors.field("cmdline") + separator + colors.value(cmdline))
-
-        try:
             status = node.status()
         except psutil.Error:
             self.output_lines.append(indent + colors.error("status"))
         else:
             self.output_lines.append(indent + colors.field("status") + separator + colors.value(status))
+
+        try:
+            create_time = node.create_time()
+        except psutil.Error:
+            self.output_lines.append(indent + colors.error("create_time"))
+        else:
+            formatted = datetime.datetime.fromtimestamp(create_time).strftime("%Y-%m-%d %H:%M:%S")
+            self.output_lines.append(indent + colors.field("create_time") + separator + colors.value(formatted))
 
         try:
             username = node.username()
@@ -120,12 +121,11 @@ class ProcessTreeRenderer(ABCTreeRenderer):
             self.output_lines.append(indent + colors.field("username") + separator + colors.value(username))
 
         try:
-            create_time = node.create_time()
+            cmdline = " ".join(node.cmdline())
         except psutil.Error:
-            self.output_lines.append(indent + colors.error("create_time"))
+            self.output_lines.append(indent + colors.error("cmdline"))
         else:
-            formatted = datetime.datetime.fromtimestamp(create_time).strftime("%Y-%m-%d %H:%M:%S")
-            self.output_lines.append(indent + colors.field("create_time") + separator + colors.value(formatted))
+            self.output_lines.append(indent + colors.field("cmdline") + separator + colors.value(cmdline))
 
     def on_node_exit(self, node, line_prefix, is_root, is_last):
         pass
