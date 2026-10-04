@@ -33,7 +33,9 @@ class PathColors:
     ) -> PathColors: ...
 
 
-COLORS_PATH_FULL: PathColors
+COLORS_PATH_BRIGHT: PathColors
+COLORS_PATH_DARK: PathColors
+COLORS_PATH_16: PathColors
 COLORS_PATH_OFF: PathColors
 
 

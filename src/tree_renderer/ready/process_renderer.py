@@ -40,16 +40,25 @@ class ProcessColors:
         )
 
 
-COLORS_PROCESS_FULL = ProcessColors(
-    pid=Paint("\033[34m"),
+COLORS_PROCESS_DEFAULT = ProcessColors(
+    pid=Paint("\033[1;38;2;51;204;255m"),
+    name=PAINT_OFF,
+    field=Paint("\033[38;2;84;179;62m"),
+    separator=Paint("\033[1;38;2;237;134;74m"),
+    value=PAINT_OFF,
+    error=Paint("\033[38;2;242;73;90m"),
+)
+
+COLORS_PROCESS_16 = ProcessColors(
+    pid=Paint("\033[1;34m"),
     name=PAINT_OFF,
     field=Paint("\033[32m"),
-    separator=Paint("\033[33m"),
+    separator=Paint("\033[1;33m"),
     value=PAINT_OFF,
     error=Paint("\033[31m"),
 )
 
-COLORS_PROCESS_OFF = COLORS_PROCESS_FULL.replace(
+COLORS_PROCESS_OFF = ProcessColors(
     pid=PAINT_OFF,
     name=PAINT_OFF,
     field=PAINT_OFF,
@@ -60,7 +69,7 @@ COLORS_PROCESS_OFF = COLORS_PROCESS_FULL.replace(
 
 
 class ProcessTreeRenderer(ABCTreeRenderer):
-    colors = COLORS_PROCESS_FULL
+    colors = COLORS_PROCESS_DEFAULT
 
     def __init__(self, glyph_style=None, colors=None, details=True):
         super().__init__(glyph_style=glyph_style, colors=colors)

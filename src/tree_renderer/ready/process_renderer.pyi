@@ -36,7 +36,8 @@ class ProcessColors:
     ) -> ProcessColors: ...
 
 
-COLORS_PROCESS_FULL: ProcessColors
+COLORS_PROCESS_DEFAULT: ProcessColors
+COLORS_PROCESS_16: ProcessColors
 COLORS_PROCESS_OFF: ProcessColors
 
 

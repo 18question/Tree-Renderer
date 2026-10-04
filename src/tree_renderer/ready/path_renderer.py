@@ -35,15 +35,31 @@ class PathColors:
         )
 
 
-COLORS_PATH_FULL = PathColors(
-    directory=Paint("\033[34m"),
+COLORS_PATH_BRIGHT = PathColors(
+    directory=Paint("\033[1;38;2;0;191;255m"),
     file=PAINT_OFF,
-    symlink=Paint("\033[36m"),
-    junction=Paint("\033[33m"),
+    symlink=Paint("\033[1;38;2;0;223;223m"),
+    junction=Paint("\033[1;38;2;223;223;0m"),
+    error=Paint("\033[38;2;223;0;0m"),
+)
+
+COLORS_PATH_DARK = PathColors(
+    directory=Paint("\033[1;38;2;0;127;255m"),
+    file=PAINT_OFF,
+    symlink=Paint("\033[1;38;2;0;191;191m"),
+    junction=Paint("\033[1;38;2;191;191;0m"),
+    error=Paint("\033[38;2;191;0;0m"),
+)
+
+COLORS_PATH_16 = PathColors(
+    directory=Paint("\033[1;34m"),
+    file=PAINT_OFF,
+    symlink=Paint("\033[1;36m"),
+    junction=Paint("\033[1;33m"),
     error=Paint("\033[31m"),
 )
 
-COLORS_PATH_OFF = COLORS_PATH_FULL.replace(
+COLORS_PATH_OFF = PathColors(
     directory=PAINT_OFF,
     file=PAINT_OFF,
     symlink=PAINT_OFF,
@@ -53,7 +69,7 @@ COLORS_PATH_OFF = COLORS_PATH_FULL.replace(
 
 
 class PathTreeRenderer(ABCTreeRenderer):
-    colors = COLORS_PATH_FULL
+    colors = COLORS_PATH_BRIGHT
 
     def __init__(self, glyph_style=None, colors=None, recursive=True):
         super().__init__(glyph_style=glyph_style, colors=colors)
