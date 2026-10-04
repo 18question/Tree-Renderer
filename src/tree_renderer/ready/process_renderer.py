@@ -1,7 +1,5 @@
 import datetime
 
-import psutil
-
 from .abc_renderer import ABCTreeRenderer
 from .colors import PAINT_OFF, Paint
 
@@ -76,12 +74,16 @@ class ProcessTreeRenderer(ABCTreeRenderer):
         self.details = details
 
     def get_children(self, node):
+        import psutil
+
         try:
             return node.children()
         except psutil.Error:
             return ()
 
     def on_node_enter(self, node, line_prefix, is_root, is_last):
+        import psutil
+
         colors = self.colors
         pid = colors.pid(str(node.pid))
 
@@ -138,4 +140,6 @@ def render(root_node, glyph_style=None, colors=None, details=True):
 
 
 def render_from_pid(pid=None, glyph_style=None, colors=None, details=True):
+    import psutil
+
     return render(psutil.Process(pid), glyph_style=glyph_style, colors=colors, details=details)
