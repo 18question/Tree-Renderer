@@ -8,6 +8,15 @@ from .ready.glyph_style import (
     STYLE_UNICODE_CMD,
     STYLE_UNICODE_INDENT_4,
 )
+from .ready.json_renderer import (
+    COLORS_JSON_16,
+    COLORS_JSON_DEFAULT,
+    COLORS_JSON_OFF,
+    JSONColors,
+    JSONTreeRenderer,
+    render as render_json,
+    render_from_path as render_json_from_path,
+)
 from .ready.path_renderer import (
     COLORS_PATH_16,
     COLORS_PATH_BRIGHT,
@@ -39,6 +48,14 @@ __all__ = [
 
     "Paint",
     "PAINT_OFF",
+
+    "JSONColors",
+    "COLORS_JSON_DEFAULT",
+    "COLORS_JSON_16",
+    "COLORS_JSON_OFF",
+    "JSONTreeRenderer",
+    "render_json",
+    "render_json_from_path",
 
     "PathColors",
     "COLORS_PATH_BRIGHT",
