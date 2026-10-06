@@ -3,6 +3,7 @@ from .ready.colors import PAINT_OFF, Paint
 from .ready.glyph_style import (
     GlyphStyle,
     STYLE_ASCII_CMD,
+    STYLE_BLANK_INDENT_2,
     STYLE_BLANK_INDENT_4,
     STYLE_UNICODE,
     STYLE_UNICODE_CMD,
@@ -45,6 +46,7 @@ __all__ = [
     "STYLE_UNICODE_CMD",
     "STYLE_ASCII_CMD",
     "STYLE_BLANK_INDENT_4",
+    "STYLE_BLANK_INDENT_2",
 
     "Paint",
     "PAINT_OFF",

@@ -37,3 +37,9 @@ STYLE_BLANK_INDENT_4 = GlyphStyle(
     branch_mid="    ",
     branch_end="    ",
 )
+STYLE_BLANK_INDENT_2 = GlyphStyle(
+    indent_guide="  ",
+    indent_blank="  ",
+    branch_mid="  ",
+    branch_end="  ",
+)

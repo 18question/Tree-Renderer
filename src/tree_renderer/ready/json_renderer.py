@@ -2,7 +2,7 @@ import json
 
 from .abc_renderer import ABCTreeRenderer
 from .colors import PAINT_OFF, Paint
-from .glyph_style import STYLE_BLANK_INDENT_4
+from .glyph_style import STYLE_BLANK_INDENT_2
 
 
 class JSONColors:
@@ -102,7 +102,7 @@ COLORS_JSON_OFF = JSONColors(
 
 
 class JSONTreeRenderer(ABCTreeRenderer):
-    glyph_style = STYLE_BLANK_INDENT_4
+    glyph_style = STYLE_BLANK_INDENT_2
     colors = COLORS_JSON_DEFAULT
     fold_threshold = 0
 

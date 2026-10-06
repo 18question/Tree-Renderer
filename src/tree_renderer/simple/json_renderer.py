@@ -1,11 +1,11 @@
 import json
 
 from .abc_renderer import ABCTreeRenderer
-from .glyph_style import STYLE_BLANK_INDENT_4
+from .glyph_style import STYLE_BLANK_INDENT_2
 
 
 class JSONTreeRenderer(ABCTreeRenderer):
-    glyph_style = STYLE_BLANK_INDENT_4
+    glyph_style = STYLE_BLANK_INDENT_2
 
     def get_children(self, node):
         if isinstance(node, tuple):

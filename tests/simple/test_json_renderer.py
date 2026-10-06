@@ -30,7 +30,7 @@ def test_single_key():
     assert str(render({"a": 1})) == "\n".join(
         (
             "{",
-            "    'a': 1",
+            "  'a': 1",
             "}",
         ),
     )
@@ -40,9 +40,9 @@ def test_nested_dict():
     assert str(render({"a": {"b": 1}})) == "\n".join(
         (
             "{",
-            "    'a': {",
-            "        'b': 1",
-            "    }",
+            "  'a': {",
+            "    'b': 1",
+            "  }",
             "}",
         ),
     )
@@ -52,10 +52,10 @@ def test_list_in_dict():
     assert str(render({"a": [1, 2]})) == "\n".join(
         (
             "{",
-            "    'a': [",
-            "        1",
-            "        2",
-            "    ]",
+            "  'a': [",
+            "    1",
+            "    2",
+            "  ]",
             "}",
         ),
     )
@@ -65,9 +65,9 @@ def test_dict_in_list():
     assert str(render([{"a": 1}])) == "\n".join(
         (
             "[",
-            "    {",
-            "        'a': 1",
-            "    }",
+            "  {",
+            "    'a': 1",
+            "  }",
             "]",
         ),
     )
